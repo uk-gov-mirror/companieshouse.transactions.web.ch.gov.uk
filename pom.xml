@@ -30,6 +30,7 @@
     <junit-jupiter-engine.version>5.13.1</junit-jupiter-engine.version>
     <mockito-junit-jupiter.version>5.18.0</mockito-junit-jupiter.version>
     <json.version>20250517</json.version>
+    <opentelemetry-instrumentation-bom.version>2.14.0</opentelemetry-instrumentation-bom.version>
 
     <!-- Internal Dependencies -->
     <common-web-java.version>3.0.40</common-web-java.version>
@@ -52,6 +53,14 @@
 
   <dependencyManagement>
     <dependencies>
+      <dependency>
+        <groupId>io.opentelemetry.instrumentation</groupId>
+        <artifactId>opentelemetry-instrumentation-bom</artifactId>
+        <version>${opentelemetry-instrumentation-bom.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
       <dependency>
         <groupId>org.apache.logging.log4j</groupId>
         <artifactId>log4j-bom</artifactId>
@@ -82,6 +91,11 @@
       <groupId>commons-beanutils</groupId>
       <artifactId>commons-beanutils</artifactId>
       <version>1.11.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>io.opentelemetry.instrumentation</groupId>
+      <artifactId>opentelemetry-spring-boot-starter</artifactId>
     </dependency>
 
     <dependency>
