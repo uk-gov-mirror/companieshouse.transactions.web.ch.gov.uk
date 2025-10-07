@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.web.SecurityFilterChain;
 import uk.gov.companieshouse.csrf.config.ChsCsrfMitigationHttpSecurityBuilder;
 
@@ -18,6 +19,11 @@ public class WebSecurity {
         @Bean
         public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
             return ChsCsrfMitigationHttpSecurityBuilder.configureWebCsrfMitigations(http).build();
+        }
+
+        @Bean
+        public WebSecurityCustomizer webSecurityCustomizer() {
+            return web -> web.ignoring().requestMatchers("/transaction/healthcheck");
         }
     }
 

@@ -30,7 +30,7 @@ public class TransactionsWebApplication implements WebMvcConfigurer {
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 
-		registry.addInterceptor(loggingInterceptor);
-		registry.addInterceptor(userDetailsInterceptor);
+		registry.addInterceptor(loggingInterceptor).excludePathPatterns("/transaction/healthcheck");
+		registry.addInterceptor(userDetailsInterceptor).excludePathPatterns("/transaction/healthcheck");
 	}
 }
