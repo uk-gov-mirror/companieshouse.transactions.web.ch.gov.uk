@@ -7,7 +7,6 @@ import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -16,18 +15,16 @@ import uk.gov.companieshouse.api.model.transaction.Transaction;
 import uk.gov.companieshouse.transactions.web.exception.ServiceException;
 import uk.gov.companieshouse.transactions.web.exception.UnsupportedTransactionConfirmationException;
 import uk.gov.companieshouse.transactions.web.model.confirmation.Confirmation;
-import uk.gov.companieshouse.transactions.web.service.confirmation.ConfirmationService;
 import uk.gov.companieshouse.transactions.web.transformer.confirmation.ConfirmationTransformer;
 
 @ExtendWith(MockitoExtension.class)
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ConfirmationServiceImplTests {
 
     @Mock
     private ConfirmationTransformer confirmationTransformer;
 
     @InjectMocks
-    private ConfirmationService confirmationService = new ConfirmationServiceImpl();
+    private ConfirmationServiceImpl confirmationService;
 
     @Test
     @DisplayName("Get Transaction Confirmation - Success Path")

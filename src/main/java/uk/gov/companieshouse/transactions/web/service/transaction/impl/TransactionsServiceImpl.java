@@ -1,6 +1,5 @@
 package uk.gov.companieshouse.transactions.web.service.transaction.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uk.gov.companieshouse.api.ApiClient;
 import uk.gov.companieshouse.api.error.ApiErrorResponseException;
@@ -14,8 +13,11 @@ import uk.gov.companieshouse.transactions.web.service.transaction.TransactionsSe
 @Service
 public class TransactionsServiceImpl implements TransactionsService {
 
-    @Autowired
-    ApiClientService apiClientService;
+    final ApiClientService apiClientService;
+
+    public TransactionsServiceImpl(ApiClientService apiClientService) {
+        this.apiClientService = apiClientService;
+    }
 
     /**
      * {@inheritDoc}
