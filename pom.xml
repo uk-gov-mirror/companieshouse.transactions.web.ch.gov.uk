@@ -50,6 +50,13 @@
     <!-- Repositories -->
     <artifactoryResolveSnapshotRepo>libs-snapshot-local</artifactoryResolveSnapshotRepo>
     <artifactoryResolveReleaseRepo>libs-release-local</artifactoryResolveReleaseRepo>
+
+    <!-- Sonar config -->
+    <sonar.projectKey>uk.gov.companieshouse:transactions.web.ch.gov.uk</sonar.projectKey>
+    <sonar.projectName>transactions.web.ch.gov.uk</sonar.projectName>
+    <sonar.token>${CODE_ANALYSIS_TOKEN}</sonar.token>
+    <sonar.login></sonar.login>
+    <sonar.password></sonar.password>
   </properties>
 
   <dependencyManagement>
@@ -302,16 +309,5 @@
       </plugin>
     </plugins>
   </build>
-
-  <repositories>
-    <repository>
-      <id>ch-artifactory-release</id>
-      <url>${MAVEN_REPOSITORY_URL}/${artifactoryResolveReleaseRepo}</url>
-    </repository>
-    <repository>
-      <id>ch-artifactory-snapshot</id>
-      <url>${MAVEN_REPOSITORY_URL}/${artifactoryResolveSnapshotRepo}</url>
-    </repository>
-  </repositories>
 
 </project>
