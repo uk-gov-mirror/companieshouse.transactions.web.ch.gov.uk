@@ -4,7 +4,6 @@ import java.util.Map;
 import java.util.Optional;
 
 import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,14 +33,16 @@ public class ConfirmationController {
 
     private static final String PAYMENT_STATE = "payment_state";
 
-    @Autowired
-    private TransactionsService transactionsService;
+    private final TransactionsService transactionsService;
+    private final ConfirmationService confirmationService;
+    private final SessionService sessionService;
 
-    @Autowired
-    private ConfirmationService confirmationService;
-
-    @Autowired
-    private SessionService sessionService;
+    public ConfirmationController(TransactionsService transactionsService, ConfirmationService confirmationService,
+                                  SessionService sessionService) {
+        this.transactionsService = transactionsService;
+        this.confirmationService = confirmationService;
+        this.sessionService = sessionService;
+    }
 
     @GetMapping
     public String getConfirmation(@PathVariable String transactionId,
